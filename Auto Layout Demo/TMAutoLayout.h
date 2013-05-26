@@ -10,6 +10,21 @@
 
 #pragma mark - Helpers
 
+/*
+ * Proc tohle?
+ *
+ * Protoze se celkem bezne stava, ze nektere view jsou porad nil a pridavaji se/odebiraji
+ * se pri nejakych uzivatelskych akcich. Makro, ktere ma Apple, tj. ...
+ *
+ * #define NSDictionaryOfVariableBindings(...) _NSDictionaryOfVariableBindings(@"" # __VA_ARGS__, __VA_ARGS__, nil)
+ *
+ * ... pada pokud tam poslete nil, coz je okay. Jenze ja jsem liny a tak jsem si napsal svoje,
+ * ktere nil ignoruje jako kdybych ho tam nedal a prida vsechny ostatni.
+ *
+ * A predpokladam, ze pokud davam view do tohoto slovniku, tak ho chci pouzit v auto layoutu
+ * a tim padem si take automaticky nastavuji translateAutoresizingMaskIntoConstraints na NO.
+ *
+ */
 static inline NSDictionary *__TMDictionaryOfVariableBindings( BOOL autoresizingMaskOff, unsigned int count, ... ) {
   if ( count <= 0 ) {
     return nil;
@@ -44,8 +59,10 @@ static inline NSDictionary *__TMDictionaryOfVariableBindings( BOOL autoresizingM
   return [result copy];
 }
 
+// Tohle makro vytvori slovnik __vB s views a translateAutoresizingMaskIntoConstraints necha na pokoji
 #define TMALVariableBindings( ... ) NSDictionary *__vB = __TMDictionaryOfVariableBindings( NO, TM_NARGS( __VA_ARGS__ ), @"" # __VA_ARGS__, __VA_ARGS__ )
 
+// Tohle makro vytvori slovnik __vB s views a translateAutoresizingMaskIntoConstraint nastavi na NO
 #define TMALVariableBindingsAMNO( ... ) NSDictionary *__vB = __TMDictionaryOfVariableBindings( YES, TM_NARGS( __VA_ARGS__ ), @"" # __VA_ARGS__, __VA_ARGS__ )
 
 #pragma mark - Visual

@@ -33,16 +33,11 @@
   _view.title = @"iCS 200x200";
   [self addSubview:_view];
   
-  
-  
-  NSDictionary *viewBindings = NSDictionaryOfVariableBindings( _view );
-  
-  
   TMALVariableBindingsAMNO( _view );
-  
-  
-  
+
+  // horizontalne je zleva 10px - potom _view - a zprava to muze cokoli, ale minimalne 10px vuci superview (|)
   TMAL_ADDS_VISUAL( @"H:|-10-[_view]-(>=10)-|" );
+  // to same, ale vertikalne
   TMAL_ADDS_VISUAL( @"V:|-10-[_view]-(>=10)-|" );
   
   _biggerButton = [[UIBarButtonItem alloc] initWithTitle:@"Bigger"

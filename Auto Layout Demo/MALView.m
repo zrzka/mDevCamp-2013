@@ -56,6 +56,7 @@
   [path stroke];
 }
 
+// Jenom pro demonstraci
 - (CGSize)systemLayoutSizeFittingSize:(CGSize)targetSize {
   if ( CGSizeEqualToSize( self.forcedFittingSize, CGSizeZero ) ) {
     return [super systemLayoutSizeFittingSize:targetSize];
@@ -63,6 +64,8 @@
   return self.forcedFittingSize;
 }
 
+// Jenom pro demonstraci, pokud je CGSizeZero, tak nedelej nic a pokud si tam
+// neco nastavime tak to vratime
 - (CGSize)intrinsicContentSize {
   if ( CGSizeEqualToSize( self.forcedIntrinsicContentSize, CGSizeZero ) ) {
     return [super intrinsicContentSize];
@@ -72,6 +75,14 @@
 
 - (void)setForcedIntrinsicContentSize:(CGSize)forcedIntrinsicContentSize {
   _forcedIntrinsicContentSize = forcedIntrinsicContentSize;
+  /*
+   * TOHLE JE VELMI DULEZITE
+   *
+   * Pokud view vi, ze se zmenila jeho prirozena velikost, musi to autolayoutu
+   * oznamit a na to slouzi invalidateIntrinsicContentSize.
+   *
+   * Pokud to nezavolate, autolayout nevi, ze se zmenila velikost a nic neudela.
+   */
   [self invalidateIntrinsicContentSize];
 }
 

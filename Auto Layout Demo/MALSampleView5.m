@@ -41,16 +41,29 @@
   
   TMALVariableBindingsAMNO( one, two );
 
+  // Portrait
+  
+  // 20px zleva vuci superview (|) - one - 20px zprava vuci superview (|)
   TMAL_ADDA_VISUAL( _portraitConstraints, @"H:|-20-[one]-20-|" );
+  // 20px zleva vuci superview (|) - two - 20px zprava vuci superview (|)
   TMAL_ADDA_VISUAL( _portraitConstraints, @"H:|-20-[two]-20-|" );
+  // 20px vrsek vuci superview (|) - one - 20px mezera - two - 20px spodek vuci superview (|)
   TMAL_ADDA_VISUAL( _portraitConstraints, @"V:|-20-[one]-20-[two]-20-|" );
+  // one a two maji stejnou vysku
   TMAL_ADDA_ATTR( _portraitConstraints, one, two, NSLayoutAttributeHeight, NSLayoutRelationEqual );
   
+  // Landscape
+  
+  // 20px zleva vuci superview (|) - one - 20px mezera - two - 20px zprava vuci superview (|)
   TMAL_ADDA_VISUAL( _landscapeConstraints, @"H:|-20-[one]-20-[two]-20-|" );
+  // 20px vrsek vuci superview (|) - one - 20px spodek vuci superview (|)
   TMAL_ADDA_VISUAL( _landscapeConstraints, @"V:|-20-[one]-20-|" );
+  // 20px vrsek vuci superview (|) - two - 20px spodek vuci superview (|)
   TMAL_ADDA_VISUAL( _landscapeConstraints, @"V:|-20-[two]-20-|" );
+  // one a two maji stejnou sirku
   TMAL_ADDA_ATTR( _landscapeConstraints, one, two, NSLayoutAttributeWidth, NSLayoutRelationEqual );
   
+  // Podle orientace nahodim vztahy
   if ( UIDeviceOrientationIsLandscape( [[UIDevice currentDevice] orientation] ) ) {
     [self addConstraints:_landscapeConstraints];
   } else {
@@ -61,6 +74,7 @@
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+  // Pri rotaci odstranim stare a nahodim ty pro spravnou orientaci
   if ( UIInterfaceOrientationIsLandscape( toInterfaceOrientation ) ) {
     [self removeConstraints:self.portraitConstraints];
     [self addConstraints:self.landscapeConstraints];

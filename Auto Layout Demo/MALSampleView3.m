@@ -40,17 +40,29 @@
   [self addSubview:br];
   
   TMALVariableBindingsAMNO( tl, tr, bl, br );
+  // 20px zleva vuci superview (|) - topleft - 20px mezera - top right - 20px zprava vuci superview (|)
   TMAL_ADDS_VISUAL( @"H:|-20-[tl]-20-[tr]-20-|" );
+  // 20px zleva vuci superview (|) - bottomleft - 20px mezera - bottom right - 20px zprava vuci superview (|)
   TMAL_ADDS_VISUAL( @"H:|-20-[bl]-20-[br]-20-|" );
+  // 20px vrsek vuci superview (|) - top left - 20px mezera - bottom left - 20px spodek vuci superview (|)
   TMAL_ADDS_VISUAL( @"V:|-20-[tl]-20-[bl]-20-|" );
+  // 20px vrsek vuci superview (|) - top right - 20px mezera - bottom right - 20px spodek vuci superview (|)
   TMAL_ADDS_VISUAL( @"V:|-20-[tr]-20-[br]-20-|" );
 
+  // top left a top right maji stejnou sirku
   TMAL_ADDS_ATTR( tl, tr, NSLayoutAttributeWidth, NSLayoutRelationEqual );
+  
+  // bottom left a bottom right maji stejnou sirku
   TMAL_ADDS_ATTR( bl, br, NSLayoutAttributeWidth, NSLayoutRelationEqual );
 
+  // top left a top right maji stejnou vysku
   TMAL_ADDS_ATTR( tl, tr, NSLayoutAttributeHeight, NSLayoutRelationEqual );
+  
+  // bottom left a bottom right maji stejnou vysku
   TMAL_ADDS_ATTR( bl, br, NSLayoutAttributeHeight, NSLayoutRelationEqual );
 
+  // bottom left ma 30% vysky top left (a protoze bottom left a bottom right maji stejnou vysku,
+  // bude mit i bottom right 30% vysky top left/right)
   TMAL_ADDS_ATTRM( bl, tl, NSLayoutAttributeHeight, NSLayoutRelationEqual, 0.3 );
   
   return self;

@@ -32,9 +32,13 @@
   [self addSubview:right];
   
   TMALVariableBindingsAMNO( left, right );
+  // 20px zleva vuci superview (|), 20px mezi left/right, 20px zprava vuci superview (|)
   TMAL_ADDS_VISUAL( @"H:|-20-[left]-20-[right]-20-|" );
+  // 20px vrsek vuci superview (|), 20px spodek vuci superview (|)
   TMAL_ADDS_VISUAL( @"V:|-20-[left]-20-|" );
+  // 20px vrsek vuci superview (|), 20px spodek vuci superview (|)
   TMAL_ADDS_VISUAL( @"V:|-20-[right]-20-|" );
+  // left a right maji stejnou sirku
   TMAL_ADDS_ATTR( left, right, NSLayoutAttributeWidth, NSLayoutRelationEqual );
   
   return self;

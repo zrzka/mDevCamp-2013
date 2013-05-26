@@ -24,8 +24,8 @@
   [self addSubview:view];
 
   TMALVariableBindingsAMNO( view );
-  TMAL_ADDS_VISUAL( @"H:|-20-[view]-20-|" );
-  TMAL_ADDS_VISUAL( @"V:|-20-[view]-20-|" );
+  TMAL_ADDS_VISUAL( @"H:|-20-[view]-20-|" ); // 20px zleva vuci superview (|) a 20px zprava vuci superview (|)
+  TMAL_ADDS_VISUAL( @"V:|-20-[view]-20-|" ); // 20px vrsek vuci superview (|) a 20px spodek vuci superview (|)
   
   return self;
 }
