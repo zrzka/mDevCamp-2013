@@ -13,4 +13,7 @@
 @property (nonatomic,copy) UIColor *borderColor;
 @property (nonatomic,copy) NSString *title;
 
+@property (nonatomic,assign) CGSize forcedFittingSize;
+@property (nonatomic,assign) CGSize forcedIntrinsicContentSize;
+
 @end

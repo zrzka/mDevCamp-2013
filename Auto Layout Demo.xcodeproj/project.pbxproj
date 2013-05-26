@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF6B0163175094DC00830F0E /* MALSampleView8.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6B0162175094DC00830F0E /* MALSampleView8.m */; };
 		BF7DC6D4174FB72800BC6573 /* MALSampleView7.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7DC6D3174FB72800BC6573 /* MALSampleView7.m */; };
 		BF7DC6D6174FBCFD00BC6573 /* sampleBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BF7DC6D5174FBCFD00BC6573 /* sampleBackground.png */; };
 		BFE47C46174F824A0070379E /* MALSampleView3.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE47C45174F824A0070379E /* MALSampleView3.m */; };
@@ -33,6 +34,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BF6B0161175094DC00830F0E /* MALSampleView8.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MALSampleView8.h; sourceTree = "<group>"; };
+		BF6B0162175094DC00830F0E /* MALSampleView8.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MALSampleView8.m; sourceTree = "<group>"; };
 		BF7DC6D2174FB72800BC6573 /* MALSampleView7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MALSampleView7.h; sourceTree = "<group>"; };
 		BF7DC6D3174FB72800BC6573 /* MALSampleView7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MALSampleView7.m; sourceTree = "<group>"; };
 		BF7DC6D5174FBCFD00BC6573 /* sampleBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sampleBackground.png; sourceTree = "<group>"; };
@@ -196,6 +199,8 @@
 				BFE47C51174FA2370070379E /* MALSampleView6.m */,
 				BF7DC6D2174FB72800BC6573 /* MALSampleView7.h */,
 				BF7DC6D3174FB72800BC6573 /* MALSampleView7.m */,
+				BF6B0161175094DC00830F0E /* MALSampleView8.h */,
+				BF6B0162175094DC00830F0E /* MALSampleView8.m */,
 			);
 			name = "Sample Views";
 			sourceTree = "<group>";
@@ -281,6 +286,7 @@
 				BFE47C4F174F9AE90070379E /* MALSampleView5.m in Sources */,
 				BFE47C52174FA2370070379E /* MALSampleView6.m in Sources */,
 				BF7DC6D4174FB72800BC6573 /* MALSampleView7.m in Sources */,
+				BF6B0163175094DC00830F0E /* MALSampleView8.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -38,6 +38,9 @@
   TMAL_ADDS_VISUAL( @"H:|[_label]|" );
   TMAL_ADDS_VISUAL( @"V:|[_label]|" );
   
+  _forcedFittingSize = (CGSize){0,0};
+  _forcedIntrinsicContentSize = (CGSize){0,0};
+  
   return self;
 }
 
@@ -51,6 +54,25 @@
   [path setLineWidth:3.0];
   [path setLineDash:dashPattern count:2 phase:2];
   [path stroke];
+}
+
+- (CGSize)systemLayoutSizeFittingSize:(CGSize)targetSize {
+  if ( CGSizeEqualToSize( self.forcedFittingSize, CGSizeZero ) ) {
+    return [super systemLayoutSizeFittingSize:targetSize];
+  }
+  return self.forcedFittingSize;
+}
+
+- (CGSize)intrinsicContentSize {
+  if ( CGSizeEqualToSize( self.forcedIntrinsicContentSize, CGSizeZero ) ) {
+    return [super intrinsicContentSize];
+  }
+  return self.forcedIntrinsicContentSize;
+}
+
+- (void)setForcedIntrinsicContentSize:(CGSize)forcedIntrinsicContentSize {
+  _forcedIntrinsicContentSize = forcedIntrinsicContentSize;
+  [self invalidateIntrinsicContentSize];
 }
 
 #pragma mark - Properties

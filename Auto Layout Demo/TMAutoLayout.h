@@ -45,6 +45,7 @@ static inline NSDictionary *__TMDictionaryOfVariableBindings( BOOL autoresizingM
 }
 
 #define TMALVariableBindings( ... ) NSDictionary *__vB = __TMDictionaryOfVariableBindings( NO, TM_NARGS( __VA_ARGS__ ), @"" # __VA_ARGS__, __VA_ARGS__ )
+
 #define TMALVariableBindingsAMNO( ... ) NSDictionary *__vB = __TMDictionaryOfVariableBindings( YES, TM_NARGS( __VA_ARGS__ ), @"" # __VA_ARGS__, __VA_ARGS__ )
 
 #pragma mark - Visual
