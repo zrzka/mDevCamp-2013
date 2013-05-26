@@ -8,6 +8,12 @@
 
 #import "TMArgs.h"
 
+#if TARGET_OS_IPHONE
+#define VIEW_CLASS_NAME UIView
+#else // TARGET_OS_IPHONE
+#define VIEW_CLASS_NAME NSView
+#endif // TARGET_OS_IPHONE
+
 #pragma mark - Helpers
 
 /*
@@ -45,12 +51,8 @@ static inline NSDictionary *__TMDictionaryOfVariableBindings( BOOL autoresizingM
   for ( unsigned int i = 0 ; i < count ; i ++ ) {
     if ( ( arg = va_arg( ap, id ) ) ) {
       result[ [names[i] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] ] = arg;
-      if ( autoresizingMaskOff && [arg isKindOfClass:[UIView class]] ) {
-#if TARGET_OS_IPHONE
-        [( UIView * )arg setTranslatesAutoresizingMaskIntoConstraints:NO];
-#else
-        [( NSView * )arg setTranslatesAutoresizingMaskIntoConstraints:NO];
-#endif
+      if ( autoresizingMaskOff && [arg isKindOfClass:[VIEW_CLASS_NAME class]] ) {
+        [( VIEW_CLASS_NAME * )arg setTranslatesAutoresizingMaskIntoConstraints:NO];
       }
     }
   }
